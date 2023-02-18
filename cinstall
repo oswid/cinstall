@@ -1,0 +1,31 @@
+sudo apt install nala -y
+sudo nala install xorg flameshot polybar rofi bspwm feh numlockx ranger zsh -y
+
+git clone https://github.com/oswid/New_dot.git
+cd /home/olaf/New_dot
+cp -r . /home/olaf
+cp .vimrc /root
+
+chmod -R o+rw /home/olaf/
+
+nala install libpulse-dev pulseaudio apulse alsa-utils
+
+sed -ie '6i\\      optional: true' /etc/netplan/00-installer-config.yaml
+
+
+
+mkdir /home/olaf/installation
+cd /home/olaf/installation
+
+
+# ----- install jumpapp
+sudo apt-get install build-essential debhelper git pandoc shunit2
+git clone https://github.com/mkropat/jumpapp.git
+cd jumpapp
+make deb
+sudo dpkg -i jumpapp*all.deb
+# if there were missing dependencies
+sudo apt-get install -f
+
+~
+~
