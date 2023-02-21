@@ -1,0 +1,5 @@
+XKBMODEL="pc104"
+XKBLAYOUT="us,ru,ru"
+XKBVARIANT="ruchey_en,ruchey_ru"
+XKBOPTIONS="grp:caps_toggle,lv3:ralt_switch,grp_led:scroll"
+BACKSPACE="guess"

@@ -1,14 +1,18 @@
+sudo apt update
+sudo apt upgrade
+
 sudo apt install nala -y
 sudo nala install xorg flameshot polybar rofi bspwm feh numlockx ranger zsh -y
 
+mkdir downloads
+cd /home/olaf/
 git clone https://github.com/oswid/New_dot.git
-cd /home/olaf/New_dot
-cp -r . /home/olaf
-cp .vimrc /root
+cp -r /home/olaf/New_dot/. /home/olaf/
+cp /home/olaf/New_dot/.vimrc /root/
 
 chmod -R o+rw /home/olaf/
 
-nala install libpulse-dev pulseaudio apulse alsa-utils
+nala install libpulse-dev pulseaudio apulse alsa-utils -y
 
 sed -ie '6i\\      optional: true' /etc/netplan/00-installer-config.yaml
 
@@ -18,14 +22,45 @@ mkdir /home/olaf/installation
 cd /home/olaf/installation
 
 
-# ----- install jumpapp
-sudo apt-get install build-essential debhelper git pandoc shunit2
+# =============================
+# ------ install jumpApp ------
+# =============================
+
+sudo apt-get install build-essential debhelper git pandoc shunit2 -y
 git clone https://github.com/mkropat/jumpapp.git
 cd jumpapp
 make deb
 sudo dpkg -i jumpapp*all.deb
 # if there were missing dependencies
-sudo apt-get install -f
+sudo apt-get install -f -y
 
-~
-~
+
+# =============================
+# -------- install ST ---------
+# =============================
+
+cd /home/olaf/installation/
+
+git clone https://github.com/oswid/st
+cd st
+sudo apt install -y libharfbuzz-dev libx11-dev libxft-dev -y
+sudo make install
+
+
+# =============================
+# --- install ruchey layout ---
+# =============================
+
+cd /home/olaf/installation/
+
+sudo wget https://github.com/A-Projects/Ruchey/releases/download/v1.4/xkb-ruchey_1.4.1_all.deb
+sudo dpkg -i xkb-ruchey_1.4.1_all.deb
+
+sudo cp /home/olaf/cinstall/ruchey_lang_config /etc/default/keyboard
+sudo dpkg-reconfigure -phigh console-setup
+
+ ==============================
+# --------- oh my zsh ---------
+# =============================
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
