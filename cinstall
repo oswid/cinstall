@@ -59,8 +59,42 @@ sudo dpkg -i xkb-ruchey_1.4.1_all.deb
 sudo cp /home/olaf/cinstall/ruchey_lang_config /etc/default/keyboard
 sudo dpkg-reconfigure -phigh console-setup
 
- ==============================
+# =============================
 # --------- oh my zsh ---------
 # =============================
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
+# =============================
+# ----- install google --------
+# =============================
+
+cd /home/olaf/installation/
+sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
+sudo apt-get install -fy
+
+# =============================
+# ---- install emelents -------
+# =============================
+
+sudo apt install -y wget apt-transport-https
+
+sudo wget -O /usr/share/keyrings/element-io-archive-keyring.gpg https://packages.element.io/debian/element-i
+o-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/element-io-archive-keyring.gpg] https://packages.element.io/debian/
+ default main" | sudo tee /etc/apt/sources.list.d/element-io.list
+
+sudo apt update
+
+sudo apt install element-desktop -y
+
+# =============================
+# --- notion telegram slack ---
+# =============================
+
+sudo nala install notion telegram-desktop
+sudo snap install slack
