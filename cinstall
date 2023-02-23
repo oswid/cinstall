@@ -96,5 +96,6 @@ sudo apt install element-desktop -y
 # --- notion telegram slack ---
 # =============================
 
-sudo nala install notion telegram-desktop
+sudo nala install telegram-desktop
 sudo snap install slack
+sudo snap install notion-snap
