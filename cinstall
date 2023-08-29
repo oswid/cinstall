@@ -53,8 +53,8 @@ sudo make install
 
 cd /home/olaf/installation/
 
-sudo wget https://github.com/A-Projects/Ruchey/releases/download/v1.4/xkb-ruchey_1.4.1_all.deb
-sudo dpkg -i xkb-ruchey_1.4.1_all.deb
+sudo wget https://github.com/a-projects/ruchey/releases/download/v2.1/xkb-data_2.33-999_all.ubuntu22.04.deb
+sudo dpkg -i xkb-data_2.33-999_all.ubuntu22.04.deb
 
 sudo cp /home/olaf/cinstall/ruchey_lang_config /etc/default/keyboard
 sudo dpkg-reconfigure -phigh console-setup
@@ -76,26 +76,10 @@ sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.
 sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
 sudo apt-get install -fy
 
-# =============================
-# ---- install emelents -------
-# =============================
 
-sudo apt install -y wget apt-transport-https
-
-sudo wget -O /usr/share/keyrings/element-io-archive-keyring.gpg https://packages.element.io/debian/element-i
-o-archive-keyring.gpg
-
-echo "deb [signed-by=/usr/share/keyrings/element-io-archive-keyring.gpg] https://packages.element.io/debian/
- default main" | sudo tee /etc/apt/sources.list.d/element-io.list
-
-sudo apt update
-
-sudo apt install element-desktop -y
 
 # =============================
-# --- notion telegram slack ---
+# --- telegram  ---
 # =============================
 
 sudo nala install telegram-desktop
-sudo snap install slack
-sudo snap install notion-snap
